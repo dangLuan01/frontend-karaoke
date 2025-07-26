@@ -1,154 +1,49 @@
-<section class="doc_banner_area banner_creative1">
-    <ul class="list-unstyled banner_shap_img">
-        <li><img src="img/new/banner_shap1.png" alt=""></li>
-        <li><img src="img/new/banner_shap4.png" alt=""></li>
-        <li><img src="img/new/banner_shap3.png" alt=""></li>
-        <li><img src="img/new/banner_shap2.png" alt=""></li>
-        <li><img data-parallax='{"x": -180, "y": 80, "rotateY":2000}' src="img/new/plus1.png" alt=""></li>
-        <li><img data-parallax='{"x": -50, "y": -160, "rotateZ":200}' src="img/new/plus2.png" alt=""></li>
-        <li></li>
-        <li></li>
-        <li></li>
-    </ul>
-    <div class="container">
-        <div class="doc_banner_content">
-            <h2 class="wow fadeInUp">Tìm Kiếm Bài Hát</h2>
-            <p class="wow fadeInUp" data-wow-delay="0.2s">Có thể nhập tên bài hát không dấu hoặc tên bài hát viết tắt (Như: Áo Mới Cà Mau => amcm)</p>
-            <form action="#" class="header_search_form">
-                <div class="header_search_form_info">
-                    <div class="form-group">
-                        <div class="input-wrapper">
-                            <i class="icon_search"></i>
-                            <input type='search' id="searchbox" autocomplete="off" name="search" placeholder="Search the Doc" />
-                            <div class="header_search_form_panel">
-                                <ul class="list-unstyled">
-                                    <li>Help Desk
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Configuration</span><a href="#">How to edit host and
-                                                    port?</a></li>
-                                            <li><span>Configuration</span><a href="#">The dev Property</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>Support
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Pages</span><a href="#">The asyncData Method</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>Documentation
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-							 <select class="search-expand-types custom-select" name="post_type" id="search_post_type">
-                                <option value="">All Docs </option>
-                                <option value="manual_kb">Knowledge Base</option>
-                                <option value="manual_documentation">Documentation</option>
-                                <option value="manual_faq">FAQs</option>
-                                <option value="forum">Forums</option>
-                                <option value="manual_portfolio">Portfolio</option>
-                                <option value="product">Products</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-                <div class="header_search_keyword">
-                    <span class="header-search-form__keywords-label">Suggested Search:</span>
-                    <ul class="list-unstyled">
-                        <li class="wow fadeInUp" data-wow-delay="0.2s"><a href="#">guest users</a></li>
-                        <li class="wow fadeInUp" data-wow-delay="0.3s"><a href="#">invoice</a></li>
-                        <li class="wow fadeInUp" data-wow-delay="0.4s"><a href="#">security</a></li>
-                    </ul>
-                </div>
-            </form>
-        </div>
-    </div>
-</section>
+---
+import { Image } from 'astro:assets';
+import community_bg_shap_one from "../../public/img/new/community_bg_shap_one.png";
+import community_bg_shap_two from "../../public/img/new/community_bg_shap_two.png";
+import shap_white from "../../public/img/new/shap_white.png";
+const domainApi = import.meta.env.PUBLIC_API_GO_URL;
+const urlImg    = import.meta.env.PUBLIC_URL_IMG;
+const songs     = await fetch(domainApi + '/api/v1/song', {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}).then((response) => response.json());
+
+---
+<slot />
 <section class="doc_features_area">
-    <img class="doc_features_shap" src="img/new/shap_white.png" alt="">
+    <Image class={"doc_features_shap"} src={shap_white} alt=""/>
     <div class="container">
         <div class="doc_features_inner">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row">
+                        {songs.data.map((song: any) => (
                         <div class="col-lg-4 col-sm-4">
                             <div class="blog_grid_post shadow-sm wow fadeInUp">
-                                <img src="img/blog-grid/blog_grid_post1.jpg" alt="">
+                                <Image src={urlImg + song.thumbnail} alt={song.name} height={250} width={350}/>
                                 <div class="grid_post_content">
                                     <div class="post_tag">
-                                        <a href="#">18 Min Read</a>
-                                        <a class="cat-woocommerce" href="#">WooCommerce</a>
+                                        <a href="#">{song.author?song.author:'Không có'}</a>
+                                        <a class="cat-woocommerce" href="#">{song.singer?song.singer:'Không có'}</a>
                                     </div>
                                     <a href="#">
-                                        <h4 class="b_title">Is Your Store Safe From Magento Killer?</h4>
+                                        <h2 class="b_title">{song.name}</h2>
                                     </a>
-                                    <p>Cup of char brilliant horse play bro bread sloshed lavatory only...</p>
+                                    <p>{song.lyrics}</p>
                                     <div class="media post_author">
-                                        <div class="round_img">
-                                            <img src="img/blog-grid/author_1.jpg" alt="">
-                                        </div>
                                         <div class="media-body author_text">
-                                            <h4>Jason Response</h4>
-                                            <div class="date">Sep 14, 2020</div>
+                                            <h4>Điệu: {song.tune?song.tune : "Không có"}</h4>
+                                            <div class="date">Tone: {song.tone?song.tone : "Không có"}</div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-sm-4">
-                            <div class="blog_grid_post shadow-sm wow fadeInUp" data-wow-delay="0.2s">
-                                <img src="img/blog-grid/blog_grid_post2.jpg" alt="">
-                                <div class="grid_post_content">
-                                    <div class="post_tag">
-                                        <a href="#">18 Min Read</a>
-                                        <a class="cat-Docy" href="#">Docy</a>
-                                    </div>
-                                    <a href="#">
-                                        <h4 class="b_title">70 Best Startups You Need to Watch Out for</h4>
-                                    </a>
-                                    <p>Cup of char brilliant horse play bro bread sloshed lavatory only...</p>
-                                    <div class="media post_author">
-                                        <div class="round_img">
-                                            <img src="img/blog-grid/author_2.jpg" alt="">
-                                        </div>
-                                        <div class="media-body author_text">
-                                            <h4>Druid Wensleydale</h4>
-                                            <div class="date">Sep 14, 2020</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-sm-4">
-                            <div class="blog_grid_post shadow-sm wow fadeInUp" data-wow-delay="0.4s">
-                                <img src="img/blog-grid/blog_grid_post3.jpg" alt="">
-                                <div class="grid_post_content">
-                                    <div class="post_tag">
-                                        <a href="#">10 Min Read</a>
-                                        <a class="cat-laravel" href="#">Laravel</a>
-                                    </div>
-                                    <a href="#">
-                                        <h4 class="b_title">Create Conditional Logic Forms & Publish</h4>
-                                    </a>
-                                    <p>Cup of char brilliant horse play bro bread sloshed lavatory only...</p>
-                                    <div class="media post_author">
-                                        <div class="round_img">
-                                            <img src="img/blog-grid/author_3.jpg" alt="">
-                                        </div>
-                                        <div class="media-body author_text">
-                                            <h4>Douglas Lyphe</h4>
-                                            <div class="date">Nov 10, 2020</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
@@ -236,8 +131,8 @@
     </div>
 </section>
 <section class="doc_community_area">
-    <img class="shap_one" src="img/new/community_bg_shap_one.png" alt="">
-    <img class="shap_two" src="img/new/community_bg_shap_two.png" alt="">
+    <Image class={"shap_one"} src={community_bg_shap_one} alt=""/>
+    <Image class={"shap_two"} src={community_bg_shap_two} alt=""/>
     <div class="container">
         <div class="doc_title text-center">
             <h2 class="wow fadeInUp" data-wow-delay="0.2s">How Docy works</h2>
