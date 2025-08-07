@@ -27,38 +27,31 @@ import banner_shap4 from "../../public/img/new/banner_shap4.png";
                         <div class="input-wrapper">
                             <i class="icon_search"></i>
                             <input type='search' id="searchbox" autocomplete="off" name="search" placeholder="Nhập tên bài hát..." />
-                            <div class="header_search_form_panel">
-                                <ul class="list-unstyled">
-                                    <li>Help Desk
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Configuration</span><a href="#">How to edit host and
-                                                    port?</a></li>
-                                            <li><span>Configuration</span><a href="#">The dev Property</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>Support
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Pages</span><a href="#">The asyncData Method</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>Documentation
-                                        <ul class="list-unstyled search_item">
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                            <li><span>Getting Started</span><a href="#">The asyncData Method</a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-							 <select class="search-expand-types custom-select" name="post_type" id="search_post_type">
+							<select class="search-expand-types custom-select" name="post_type" id="search_post_type">
                                 <option value="">Tất cả </option>
                                 <option value="bolero">Bolero</option>
                                 <option value="vpop">Nhạc trẻ</option>
                                 <option value="giong-co">Giọng cổ</option>
                             </select>
+                            <div class="dropdown-menu shadow mt-1" id="search-dropdown">
+                                <!-- Item 1 -->
+                                <div class="search-item">
+                                    <div class="row g-2">
+                                        <div class="col-auto">
+                                            
+                                        </div>
+                                        <div class="col">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <strong>Vui lòng nhập tên bài hát</strong>
+                                            </div>
+                                            <small class="text-muted"></small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="search-item text-center text-primary fw-bold">
+                                   Không tìm thấy
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

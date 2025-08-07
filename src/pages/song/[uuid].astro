@@ -1,0 +1,34 @@
+---
+export const prerender = false;
+import Layout from '../../layouts/Layout.astro';
+const domainApi = import.meta.env.PUBLIC_API_GO_URL;
+const domainImg = import.meta.env.PUBLIC_URL_IMG;
+const { uuid } = Astro.params;
+const datas = await fetch(domainApi + `/api/v1/song/${uuid}`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}).then((response) => response.json());
+const url_image = datas.data.domain_img;
+---
+
+<Layout>
+  <div class="swiper">
+    <div class="swiper-wrapper">
+      {datas.data.images.map((item: any) => (
+        <div class="swiper-slide">
+          <img src={ domainImg + url_image + item.image} alt={datas.data.name} loading="eager" decoding="sync"/>
+        </div>
+      ))}
+    </div>
+    <!-- Navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Fullscreen toggle button -->
+  <button class="fullscreen-button" id="fullscreenToggle">Enter Fullscreen</button>
+</Layout>
