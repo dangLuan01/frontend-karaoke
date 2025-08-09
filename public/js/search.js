@@ -78,7 +78,26 @@ document.addEventListener("DOMContentLoaded", function () {
                     dropdown.innerHTML = `<div class="search-item text-danger text-center">Lỗi kết nối tới API</div>`;
                     dropdown.classList.add("show");
                 });
+                fetch("http://localhost:8080/api/v1/suggestion", {
+                    method: "POST",
+                    // headers: {
+                    //     "Content-Type": "application/json",
+                    // },
+                    body: JSON.stringify({
+                        search: query
+                    }),
+                })
+                .then(response => response.json())
+                .then(data => {
+                    //console.log(data);
+                })
+                .catch(error => {
+                    //console.error("Error:", error);
+                });
         }, 2000);
+
+        
+
     });
     // Hide dropdown when clicking outside
     document.addEventListener("click", (e) => {

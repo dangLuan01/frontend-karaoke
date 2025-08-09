@@ -4,6 +4,14 @@ import banner_shap1 from "../../public/img/new/banner_shap1.png";
 import banner_shap2 from "../../public/img/new/banner_shap2.png";
 import banner_shap3 from "../../public/img/new/banner_shap3.png";
 import banner_shap4 from "../../public/img/new/banner_shap4.png";
+const domainApi = import.meta.env.PUBLIC_API_GO_URL;
+const datas = await fetch(domainApi + `/api/v1/suggestion/list`, {
+  method: 'GET',
+  headers: {
+    'Content-Type': 'application/json',
+  }
+}).then((response) => response.json());
+const suggestion = datas.data
 ---
 <section class="doc_banner_area banner_creative1">
     <ul class="list-unstyled banner_shap_img">
@@ -56,11 +64,11 @@ import banner_shap4 from "../../public/img/new/banner_shap4.png";
                     </div>
                 </div>
                 <div class="header_search_keyword">
-                    <span class="header-search-form__keywords-label">Suggested Search:</span>
+                    <span class="header-search-form__keywords-label">Đang Thịnh Hành:</span>
                     <ul class="list-unstyled">
-                        <li class="wow fadeInUp" data-wow-delay="0.2s"><a href="#">guest users</a></li>
-                        <li class="wow fadeInUp" data-wow-delay="0.3s"><a href="#">invoice</a></li>
-                        <li class="wow fadeInUp" data-wow-delay="0.4s"><a href="#">security</a></li>
+                        {suggestion.map((item: any) => (
+                        <li class="wow fadeInUp" data-wow-delay="0.2s"><a href="#">{item.search}</a></li>
+                        ))}
                     </ul>
                 </div>
             </form>
