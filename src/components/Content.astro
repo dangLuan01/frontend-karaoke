@@ -1,7 +1,5 @@
 ---
 import { Image } from 'astro:assets';
-import community_bg_shap_one from "../../public/img/new/community_bg_shap_one.png";
-import community_bg_shap_two from "../../public/img/new/community_bg_shap_two.png";
 import shap_white from "../../public/img/new/shap_white.png";
 const domainApi = import.meta.env.PUBLIC_API_GO_URL;
 const urlImg    = import.meta.env.PUBLIC_URL_IMG;
@@ -22,18 +20,26 @@ const songs     = await fetch(domainApi + '/api/v1/song', {
                 <div class="col-lg-12">
                     <div class="row">
                         {songs.data.map((song: any) => (
-                        <a href={ '/song/' + song.uuid }>
+                        <a href={ '/song/' + song.uuid } >
                         <div class="col-lg-4 col-sm-4">
                             <div class="blog_grid_post shadow-sm wow fadeInUp">
                                 <Image src={urlImg + song.thumbnail} alt={song.name} height={250} width={350}/>
                                 <div class="grid_post_content">
                                     <div class="post_tag">
                                         <a href="#">{song.author?song.author:'Không có'}</a>
-                                        <a class="cat-woocommerce" href="#">{song.singer?song.singer:'Không có'}</a>
+                                        <a class="cat-laravel" href="#">{song.singer?song.singer:'Không có'}</a>
                                     </div>
                                     <a href="#">
                                         <h2 class="b_title">{song.name}</h2>
                                     </a>
+                                    <style>
+                                        p {
+                                            display: -webkit-box;
+                                            -webkit-line-clamp: 2;
+                                            -webkit-box-orient: vertical;
+                                            overflow: hidden;
+                                        }
+                                    </style>
                                     <p>{song.lyrics}</p>
                                     <div class="media post_author">
                                         <div class="media-body author_text">
@@ -129,186 +135,6 @@ const songs     = await fetch(domainApi + '/api/v1/song', {
                 <a href="#" class="question_text">Want to know more or have a<br> Question?
                 </a>
             </div>
-        </div>
-    </div>
-</section>
-<section class="doc_community_area">
-    <Image class={"shap_one"} src={community_bg_shap_one} alt=""/>
-    <Image class={"shap_two"} src={community_bg_shap_two} alt=""/>
-    <div class="container">
-        <div class="doc_title text-center">
-            <h2 class="wow fadeInUp" data-wow-delay="0.2s">How Docy works</h2>
-            <p class="wow fadeInUp" data-wow-delay="0.4s">Learn languages online with the world's best tutors
-            </p>
-        </div>
-        <div class="doc_community_info">
-            <div class="doc_community_item wow fadeInUp" data-wow-delay="0.2s">
-                <div class="doc_community_icon">
-                    <i class="icon_folder-alt"></i>
-                </div>
-                <div class="doc_entry_content">
-                    <a href="#">
-                        <h4>The Intercom Messenger</h4>
-                    </a>
-                    <p>Setting up and customizing your Messenger to start chatting with customers</p>
-                    <div class="doc_entry_info">
-                        <ul class="list-unstyled author_avatar">
-                            <li><img src="img/new/img_02.png" alt=""></li>
-                            <li><img src="img/new/img_03.png" alt=""></li>
-                            <li><img src="img/new/img_04.png" alt=""></li>
-                            <li>+2</li>
-                        </ul>
-                        <div class="text">
-                            76 articles in this collection<br> Written by Ruairí Galavan, Jack Jenkins, DJ and 7 others
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="doc_community_item wow fadeInUp" data-wow-delay="0.3s">
-                <div class="doc_community_icon">
-                    <i class="icon_comment_alt"></i>
-                </div>
-                <div class="doc_entry_content">
-                    <a href="#">
-                        <h4>The Intercom Messenger</h4>
-                    </a>
-                    <p>Setting up and customizing your Messenger to start chatting with customers</p>
-                    <div class="doc_entry_info">
-                        <ul class="list-unstyled author_avatar">
-                            <li><img src="img/new/img_02.png" alt=""></li>
-                            <li><img src="img/new/img_03.png" alt=""></li>
-                            <li><img src="img/new/img_04.png" alt=""></li>
-                            <li>+2</li>
-                        </ul>
-                        <div class="text">
-                            76 articles in this collection<br> Written by Ruairí Galavan, Jack Jenkins, DJ and 7 others
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="doc_community_item wow fadeInUp" data-wow-delay="0.4s">
-                <div class="doc_community_icon">
-                    <i class=" icon_lightbulb_alt"></i>
-                </div>
-                <div class="doc_entry_content">
-                    <a href="#">
-                        <h4>The Intercom Messenger</h4>
-                    </a>
-                    <p>Setting up and customizing your Messenger to start chatting with customers</p>
-                    <div class="doc_entry_info">
-                        <ul class="list-unstyled author_avatar">
-                            <li><img src="img/new/img_02.png" alt=""></li>
-                            <li><img src="img/new/img_03.png" alt=""></li>
-                            <li><img src="img/new/img_04.png" alt=""></li>
-                            <li>+2</li>
-                        </ul>
-                        <div class="text">
-                            76 articles in this collection<br> Written by Ruairí Galavan, Jack Jenkins, DJ and 7 others
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center wow fadeInUp" data-wow-delay="0.4s">
-                <a href="#" class="question_text">Contact us and we’ll get back to you<br>
-                    as soon as we can.
-                </a>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="doc_testimonial_area">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                <div class="doc_testimonial_slider">
-                    <div class="item">
-                        <h3>Tinkety tonk old fruit victoria sponge squiffy bleeder twit the bee's knees loo David, buggered haggle pear shaped bubble and squeak.”</h3>
-                        <div class="name">
-                            <h5>Penny Tool,</h5>
-                            <span>Director of Sales and Success</span>
-                        </div>
-                        <a href="#" class="sign"><img src="img/new/sign.png" alt=""></a>
-                    </div>
-                    <div class="item">
-                        <h3>Hendrerit laoreet incidunt molestie eum placeat, neque ridiculus? Maecenas incididunt aperiam tempora cumque quos?”</h3>
-                        <div class="name">
-                            <h5>Penny Tool,</h5>
-                            <span>Director of Sales and Success</span>
-                        </div>
-                        <a href="#" class="sign"><img src="img/new/sign.png" alt=""></a>
-                    </div>
-                    <div class="item">
-                        <h3>Curabitur vitae dignissimos pulvinar eligendi ullamcorper, laoreet, accusantium numquam habitant quaerat minim consequatur”</h3>
-                        <div class="name">
-                            <h5>Penny Tool,</h5>
-                            <span>Director of Sales and Success</span>
-                        </div>
-                        <a href="#" class="sign"><img src="img/new/sign.png" alt=""></a>
-                    </div>
-                    <div class="item">
-                        <h3>Tinkety tonk old fruit victoria sponge squiffy bleeder twit the bee's knees loo David, buggered haggle pear shaped bubble and squeak.”</h3>
-                        <div class="name">
-                            <h5>Penny Tool,</h5>
-                            <span>Director of Sales and Success</span>
-                        </div>
-                        <a href="#" class="sign"><img src="img/new/sign.png" alt=""></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="doc_img_slider">
-                    <div class="item">
-                        <img class="dot" src="img/new/dot.png" alt="">
-                        <div class="round one"></div>
-                        <div class="round two"></div>
-                        <img src="img/new/feedback_img.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img class="dot" src="img/new/dot.png" alt="">
-                        <div class="round one"></div>
-                        <div class="round two"></div>
-                        <img src="img/new/feedback_img_02.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img class="dot" src="img/new/dot.png" alt="">
-                        <div class="round one"></div>
-                        <div class="round two"></div>
-                        <img src="img/new/feedback_img_03.jpg" alt="">
-                    </div>
-                    <div class="item">
-                        <img class="dot" src="img/new/dot.png" alt="">
-                        <div class="round one"></div>
-                        <div class="round two"></div>
-                        <img src="img/new/feedback_img_04.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<section class="doc_subscribe_area">
-    <div class="container">
-        <div class="doc_subscribe_inner">
-            <img class="one" src="img/new/subscribe_shap.png" alt="">
-            <img class="two" src="img/new/subscribe_shap_two.png" alt="">
-            <div class="text wow fadeInLeft" data-wow-delay="0.2s">
-                <h2>Great Customer <br>Relationships start here</h2>
-            </div>
-            <form action="#" class="doc_subscribe_form wow fadeInRight mailchimp" data-wow-delay="0.4s" method="post">
-                <div class="form-group">
-                    <div class="input-fill">
-                        <input type="email" name="EMAIL" id="email" class="memail" placeholder="Your work email">
-                    </div>
-                    <button type="submit" class="submit_btn">Get started</button>
-                    <p class="mchimp-errmessage" style="display: none;"></p>
-                    <p class="mchimp-sucmessage" style="display: none;"></p>
-                </div>
-                <ul class="list-unstyled">
-                    <li><a href="#">Messenger</a></li>
-                    <li><a href="#">Product Tours</a></li>
-                    <li><a href="#">Inbox and more</a></li>
-                </ul>
-            </form>
         </div>
     </div>
 </section>

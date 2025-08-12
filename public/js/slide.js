@@ -69,13 +69,13 @@
       fullscreenButton.addEventListener('click', () => {
         if (!document.fullscreenElement) {
           swiperElement.requestFullscreen().then(() => {
-            fullscreenButton.textContent = 'Exit Fullscreen';
+            fullscreenButton.textContent = 'Thu nhỏ';
           }).catch(err => {
             console.error('Error entering fullscreen:', err);
           });
         } else {
           document.exitFullscreen().then(() => {
-            fullscreenButton.textContent = 'Enter Fullscreen';
+            fullscreenButton.textContent = 'Phóng to';
           }).catch(err => {
             console.error('Error exiting fullscreen:', err);
           });
@@ -85,9 +85,9 @@
       // Update button text when fullscreen state changes
       document.addEventListener('fullscreenchange', () => {
         if (!document.fullscreenElement) {
-          fullscreenButton.textContent = 'Enter Fullscreen';
+          fullscreenButton.textContent = 'Phóng to';
         } else {
-          fullscreenButton.textContent = 'Exit Fullscreen';
+          fullscreenButton.textContent = 'Thu nhỏ';
         }
       });
     }

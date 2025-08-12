@@ -16216,7 +16216,7 @@ input[type=number] {
 }
 
 .post_tag a+a {
-    padding-left: 10px;
+    padding-left: 0px;
 }
 
 .post_tag a+a:before {
@@ -17880,7 +17880,7 @@ blockquote .author {
 .doc_banner_area {
     background: #3636cd;
     text-align: center;
-    padding: 290px 0 200px;
+    padding: 100px 0 200px;
     position: relative;
 }
 
@@ -20317,4 +20317,16 @@ body.body_dark img.logo-light {
 }
 .fullscreen-button:hover {
   background: rgba(0, 0, 0, 0.9);
+}
+.exit-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
